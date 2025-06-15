@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🌍 MEGA TOURS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      padding: 30px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      background-color: rgba(46, 204, 113, 0.9);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    p {
+      font-style: italic;
+      color: #ddd;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(255,255,255,0.1);
+      margin: 8px 0;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon { color: #f1c40f; }
+
+    .music-toggle {
+      display: block;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.3);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .music-toggle:hover {
+      background: rgba(255,255,255,0.5);
+    }
+
+    .music-toggle i {
+      margin-right: 8px;
+    }
+
+    .editable {
+      outline: none;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="https://files.catbox.moe/wdqtmd.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button id="toggleButton" class="music-toggle" onclick="toggleMusic()">
+    <i class="fas fa-volume-up"></i> Mute Music
+  </button>
+
+  <h1><i class="fas fa-map-marked-alt"></i> 🌍 MEGA TOURS</h1>
+
+  <h2><i class="fas fa-star"></i> 800 GEMS</h2>
+  <p>No users listed in this category yet.</p>
+  <ul id="list800">
+    <!-- Empty section -->
+  </ul>
+
+  <h2><i class="fas fa-gem"></i> 1600 GEMS</h2>
+  <p>No users listed in this category yet.</p>
+  <ul id="list1600">
+    <!-- Empty section -->
+  </ul>
+
+  <div class="note">Only Harz123551 can edit this page. Press Ctrl+E and enter your password to unlock edit mode.</div>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    const button = document.getElementById('toggleButton');
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        button.innerHTML = '<i class="fas fa-volume-up"></i> Mute Music';
+      } else {
+        music.pause();
+        button.innerHTML = '<i class="fas fa-volume-mute"></i> Play Music';
+      }
+    }
+
+    // Admin-only editing
+    document.addEventListener('keydown', function (e) {
+      if (e.ctrlKey && e.key === 'e') {
+        e.preventDefault();
+        const pass = prompt("Enter admin password:");
+        if (pass === "harzadmin") {
+          enableEditing();
+        } else {
+          alert("Incorrect password.");
+        }
+      }
+    });
+
+    function enableEditing() {
+      const tags = document.querySelectorAll("h1, h2, p, li");
+      tags.forEach(tag => {
+        tag.setAttribute("contenteditable", "true");
+        tag.classList.add("editable");
+      });
+      alert("Edit mode enabled. You can now change the text.");
+    }
+  </script>
+</body>
+</html>
