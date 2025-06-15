@@ -3,133 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mega Tours</title>
+  <title>STUMBLE GEMS WEB</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
     body {
       margin: 0;
-      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(145deg, #a1c4fd, #c2e9fb);
+      color: #333;
       text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background-attachment: fixed;
     }
 
     header {
-      background: linear-gradient(90deg, #ffcc00, #ff9900);
-      padding: 40px 20px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
-      border-radius: 0 0 40px 40px;
-      position: relative;
-      overflow: visible;
+      background: #ffcc00;
+      padding: 30px 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     h1 {
-      font-size: 3.8em;
-      color: #fff;
-      text-shadow:
-        3px 3px 6px rgba(0,0,0,0.6),
-        0 0 10px #ffd700,
-        0 0 20px #ffa500,
-        0 0 30px #ff8c00;
-      letter-spacing: 0.1em;
-      margin: 0;
-      user-select: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5em;
+      font-size: 3.5em;
+      color: #222;
+      text-shadow: 2px 2px #fff;
     }
 
     h1 .emoji {
-      font-size: 1.5em;
-      filter: drop-shadow(0 0 3px #ffcc00);
-      animation: pulse 2s infinite alternate;
-    }
-
-    @keyframes pulse {
-      from { filter: drop-shadow(0 0 3px #ffcc00); }
-      to { filter: drop-shadow(0 0 15px #ffd700); }
+      font-size: 1.2em;
     }
 
     .subtitle {
-      font-size: 1.3em;
-      color: #f9d71c;
+      font-size: 1.2em;
+      color: #555;
       margin-top: 10px;
-      font-weight: 600;
-      text-shadow: 1px 1px 2px #000000bb;
     }
 
     .music-toggle {
-      background-color: #ffcc00;
+      background-color: #fff;
       border: none;
-      padding: 12px 28px;
-      margin: 25px auto;
-      font-size: 1.1em;
-      border-radius: 25px;
+      padding: 10px 20px;
+      margin: 20px auto;
+      font-size: 1em;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 5px 10px rgba(255, 204, 0, 0.6);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      color: #3a1c00;
-      font-weight: 700;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
-    }
-
-    .music-toggle:hover {
-      background-color: #ffb700;
-      color: #1a0e00;
-      box-shadow: 0 8px 15px rgba(255, 183, 0, 0.9);
+      gap: 10px;
     }
 
     section {
-      padding: 40px 20px 60px;
-      flex-grow: 1;
+      padding: 40px 20px;
     }
 
     .box {
-      background-color: #ffffff22;
-      border-radius: 20px;
-      padding: 35px 30px;
+      background-color: #ffffffdd;
+      border-radius: 15px;
+      padding: 30px;
       margin: 20px auto;
-      width: 90%;
-      max-width: 650px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      color: #fff;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .box:hover {
-      background-color: #ffffff33;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     footer {
-      font-size: 0.95em;
+      font-size: 0.9em;
       padding: 20px;
-      color: #ddd;
-      background: #3a1c00cc;
-      user-select: none;
-      border-top: 1px solid #ffcc00;
+      color: #777;
     }
 
     .edit-warning {
-      margin-top: 28px;
+      margin-top: 20px;
       font-style: italic;
-      color: #ffd700;
-      font-weight: 600;
-      text-shadow: 1px 1px 2px #000000cc;
-      user-select: none;
+      color: #d35400;
     }
   </style>
 </head>
@@ -137,17 +81,13 @@
 
   <!-- 🎵 Música de fondo -->
   <audio id="bg-music" autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/21/audio_8d07ef88d6.mp3?filename=chill-phonk-loop-11470.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/audio/2023/10/09/audio_4ba616312a.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <header>
-    <h1>
-      <span class="emoji">🚀</span>
-      Mega Tours
-      <span class="emoji">🌟</span>
-    </h1>
-    <p class="subtitle">Your gateway to exclusive gems</p>
+    <h1><span class="emoji">💎👑🎮</span> STUMBLE GEMS WEB <span class="emoji">🎮👑💎</span></h1>
+    <p class="subtitle">Exclusive gem listings for the elite</p>
   </header>
 
   <button id="toggleButton" class="music-toggle" onclick="toggleMusic()">
@@ -165,7 +105,7 @@
       <p><i>No users listed yet...</i></p>
     </div>
 
-    <p class="edit-warning">🔒 Only the site owner can edit this page.</p>
+    <p class="edit-warning">🔒 Only the site owner (Harz123551) can edit this page.</p>
   </section>
 
   <footer>
