@@ -2,112 +2,175 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🌍 MEGA TOURS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mega Tours</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
-      padding: 30px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #f0f0f0;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-attachment: fixed;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ffcc00, #ff9900);
+      padding: 40px 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+      border-radius: 0 0 40px 40px;
+      position: relative;
+      overflow: visible;
     }
 
     h1 {
-      text-align: center;
-      font-size: 3em;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      margin-top: 40px;
-      background-color: rgba(46, 204, 113, 0.9);
-      padding: 10px;
-      border-radius: 8px;
-    }
-
-    p {
-      font-style: italic;
-      color: #ddd;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      background: rgba(255,255,255,0.1);
-      margin: 8px 0;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 1.1em;
+      font-size: 3.8em;
+      color: #fff;
+      text-shadow:
+        3px 3px 6px rgba(0,0,0,0.6),
+        0 0 10px #ffd700,
+        0 0 20px #ffa500,
+        0 0 30px #ff8c00;
+      letter-spacing: 0.1em;
+      margin: 0;
+      user-select: none;
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 0.5em;
     }
 
-    .icon { color: #f1c40f; }
+    h1 .emoji {
+      font-size: 1.5em;
+      filter: drop-shadow(0 0 3px #ffcc00);
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { filter: drop-shadow(0 0 3px #ffcc00); }
+      to { filter: drop-shadow(0 0 15px #ffd700); }
+    }
+
+    .subtitle {
+      font-size: 1.3em;
+      color: #f9d71c;
+      margin-top: 10px;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px #000000bb;
+    }
 
     .music-toggle {
-      display: block;
-      margin: 20px auto;
-      background: rgba(255,255,255,0.3);
+      background-color: #ffcc00;
       border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 1em;
+      padding: 12px 28px;
+      margin: 25px auto;
+      font-size: 1.1em;
+      border-radius: 25px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      box-shadow: 0 5px 10px rgba(255, 204, 0, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #3a1c00;
+      font-weight: 700;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
     }
 
     .music-toggle:hover {
-      background: rgba(255,255,255,0.5);
+      background-color: #ffb700;
+      color: #1a0e00;
+      box-shadow: 0 8px 15px rgba(255, 183, 0, 0.9);
     }
 
-    .music-toggle i {
-      margin-right: 8px;
+    section {
+      padding: 40px 20px 60px;
+      flex-grow: 1;
     }
 
-    .editable {
-      outline: none;
+    .box {
+      background-color: #ffffff22;
+      border-radius: 20px;
+      padding: 35px 30px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 650px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      user-select: none;
+      transition: background-color 0.3s ease;
     }
 
-    .note {
-      text-align: center;
-      font-size: 0.9em;
-      color: #ccc;
-      margin-top: 30px;
+    .box:hover {
+      background-color: #ffffff33;
+    }
+
+    footer {
+      font-size: 0.95em;
+      padding: 20px;
+      color: #ddd;
+      background: #3a1c00cc;
+      user-select: none;
+      border-top: 1px solid #ffcc00;
+    }
+
+    .edit-warning {
+      margin-top: 28px;
+      font-style: italic;
+      color: #ffd700;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px #000000cc;
+      user-select: none;
     }
   </style>
 </head>
 <body>
+
+  <!-- 🎵 Música de fondo -->
   <audio id="bg-music" autoplay loop>
-    <source src="https://files.catbox.moe/wdqtmd.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/21/audio_8d07ef88d6.mp3?filename=chill-phonk-loop-11470.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <header>
+    <h1>
+      <span class="emoji">🚀</span>
+      Mega Tours
+      <span class="emoji">🌟</span>
+    </h1>
+    <p class="subtitle">Your gateway to exclusive gems</p>
+  </header>
 
   <button id="toggleButton" class="music-toggle" onclick="toggleMusic()">
     <i class="fas fa-volume-up"></i> Mute Music
   </button>
 
-  <h1><i class="fas fa-map-marked-alt"></i> 🌍 MEGA TOURS</h1>
+  <section>
+    <div class="box">
+      <h2>🌟 800 GEMS</h2>
+      <p><i>No users listed yet...</i></p>
+    </div>
 
-  <h2><i class="fas fa-star"></i> 800 GEMS</h2>
-  <p>No users listed in this category yet.</p>
-  <ul id="list800">
-    <!-- Empty section -->
-  </ul>
+    <div class="box">
+      <h2>💠 1600 GEMS</h2>
+      <p><i>No users listed yet...</i></p>
+    </div>
 
-  <h2><i class="fas fa-gem"></i> 1600 GEMS</h2>
-  <p>No users listed in this category yet.</p>
-  <ul id="list1600">
-    <!-- Empty section -->
-  </ul>
+    <p class="edit-warning">🔒 Only the site owner can edit this page.</p>
+  </section>
 
-  <div class="note">Only Harz123551 can edit this page. Press Ctrl+E and enter your password to unlock edit mode.</div>
+  <footer>
+    &copy; 2025 Mega Tours — All rights reserved.
+  </footer>
 
   <script>
     const music = document.getElementById('bg-music');
@@ -121,28 +184,6 @@
         music.pause();
         button.innerHTML = '<i class="fas fa-volume-mute"></i> Play Music';
       }
-    }
-
-    // Admin-only editing
-    document.addEventListener('keydown', function (e) {
-      if (e.ctrlKey && e.key === 'e') {
-        e.preventDefault();
-        const pass = prompt("Enter admin password:");
-        if (pass === "harzadmin") {
-          enableEditing();
-        } else {
-          alert("Incorrect password.");
-        }
-      }
-    });
-
-    function enableEditing() {
-      const tags = document.querySelectorAll("h1, h2, p, li");
-      tags.forEach(tag => {
-        tag.setAttribute("contenteditable", "true");
-        tag.classList.add("editable");
-      });
-      alert("Edit mode enabled. You can now change the text.");
     }
   </script>
 </body>
